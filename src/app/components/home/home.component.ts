@@ -64,7 +64,6 @@ export class HomeComponent implements OnInit {
     this.trendingResults.getResults(this.offset).subscribe(
       (data) => {
         this.trendingData = data?.works;
-        this.searchTerm = 'Trending';
         this.isLoading = false;
       },
       (error) => {
