@@ -1,31 +1,60 @@
 .header {
-  @apply
+  @apply tw-h-20
   tw-flex
-  tw-flex-row
+  tw-p-6
   tw-justify-between
   tw-items-center
-  tw-rounded-4-px
-  tw-p-12-px
-  tw-m-24-px;
-  background: linear-gradient(146deg, #e1eeff 19.67%, #ffe4fb 127.56%);
+  tw-bg-bg-dark
+  tw-font-bold;
 }
 
-.search-button {
-  @apply
-  tw-border 
-  tw-border-solid 
-  tw-border-dark-border
-  tw-rounded-4-px
+.searchBox {
+  @apply tw-w-400-px
+  tw-h-12
+  tw-border
+  tw-border-solid
+  tw-border-bg-light
+  tw-items-center
+  tw-rounded-xl
   tw-flex
-  tw-justify-center
-  tw-h-60-px
-  tw-w-200-px
+  tw-p-3;
+}
+.searchBox input{
+  @apply
+  tw-text-16-px
+  tw-bg-bg-dark;
+  
 }
 
-.trending-subjects {
+
+.home-main {
+  @apply 
+  tw-flex;
+  min-height: calc(100% - (5rem));
+}
+.navItem {
+  @apply 
+  tw-flex
+  tw-gap-4
+  tw-items-center
+  tw-h-12
+  tw-p-6
+  tw-bg-red-500
+  tw-font-semibold
+  tw-rounded-xl
+  tw-cursor-pointer
+}
+.navigation{
   @apply
-  tw-bg-table-header-bg
-  tw-p-12-px
-  tw-rounded-4-px
-  tw-shadow-lg
+  tw-flex
+  tw-flex-col
+  tw-gap-7
+  tw-p-6
+  tw-bg-bg-light
+  tw-w-400-px;
+}
+
+.searchResults{
+  @apply
+  tw-w-full
 }

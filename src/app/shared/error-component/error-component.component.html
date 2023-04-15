@@ -1,0 +1,17 @@
+<div
+  class="tw-w-full tw-h-full tw-flex tw-flex-col tw-items-center tw-justify-center"
+>
+  <mat-icon class="cancel-icon">cancel</mat-icon>
+  <div *ngIf="error === undefined; else errorMessage">
+    <span class="muted">No results found please try again.</span>
+  </div>
+  <ng-template #errorMessage>
+    <p class="tw-text-24-px tw-font-bold">Error {{ error.status }}</p>
+    <span *ngIf="error.status === 404" class="muted"
+      >No results found please try again.</span
+    >
+    <span *ngIf="error.status === 500" class="muted"
+      >Internal Server Error please try again later.</span
+    >
+  </ng-template>
+</div>

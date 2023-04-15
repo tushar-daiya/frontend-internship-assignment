@@ -1,6 +1,28 @@
+<div class="tw-h-full tw-w-full" *ngIf="isLoading === true">
+  <front-end-internship-assignment-loading></front-end-internship-assignment-loading>
+</div>
+<div
+  class="goHome tw-p-6 tw-pb-0 tw-flex tw-items-center tw-gap-2 tw-cursor-pointer"
+  routerLink=""
+>
+  <mat-icon>arrow_back</mat-icon>
+  <span>Home</span>
+</div>
+<div class="tw-h-full tw-w-full" *ngIf="error">
+  <front-end-internship-assignment-error-component
+    [error]="error"
+  ></front-end-internship-assignment-error-component>
+</div>
 <div *ngIf="allBooks.length > 0">
   <front-end-internship-assignment-table-view
-  [booksList]="allBooks"
-  [subjectName]="subjectName"
+    [booksList]="allBooks"
+    [subjectName]="subjectName"
   ></front-end-internship-assignment-table-view>
+  <mat-paginator
+    (page)="pageChanged($event)"
+    [length]="resultLength"
+    [pageSize]="10"
+    aria-label="Select page"
+  >
+  </mat-paginator>
 </div>

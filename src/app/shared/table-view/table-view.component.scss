@@ -12,8 +12,8 @@
   tw-h-60-px
   tw-border
   tw-border-solid
-  tw-border-light-border
-  tw-bg-table-header-bg
+  tw-border-bg-dark
+  tw-bg-bg-dark
   tw-pl-12-px;
 
   .header {
@@ -25,16 +25,16 @@
     tw-border-b-0
     tw-border-t-0
     tw-border-solid
-    tw-border-light-border
+    tw-border-bg-dark
   }
 
 }
 
 .table-body {
   @apply
-  tw-border
+  tw-border-2
   tw-border-solid
-  tw-border-light-border
+  tw-border-bg-dark
   tw-border-t-0;
 
   .row-data {
@@ -45,6 +45,10 @@
     tw-border-r-0
     tw-border-t-0
     tw-border-solid
-    tw-border-light-border
+    tw-border-bg-dark
+  }
+  .row-data:hover{
+    @apply
+    tw-bg-bg-light
   }
 }

@@ -1,23 +1,84 @@
 <div class="header">
-  <div class="tw-text-24-px tw-font-600">Open Books Library</div>
-  <div class="search-button">
-    <mat-icon class="tw-mt-16-px" aria-label="Search Icon">search</mat-icon>
+  <div class="tw-text-24-px tw-cursor-pointer" routerLink="">Open Book Library</div>
+  <div class="searchBox">
+    <mat-icon>search</mat-icon>
     <input
       [formControl]="bookSearch"
       name="searchKey"
       type="text"
-      placeholder="Search Books"
-      class="tw-border-0 tw-bg-inherit"
+      placeholder="Search Books/Author"
+      class="tw-border-0 tw-bg-inherit tw-outline-none tw-ml-2 tw-w-full"
+      (input)="isLoading=true"
+    />
+    <mat-icon
+      class="tw-cursor-pointer"
+      *ngIf="bookSearch.value"
+      (click)="clearSearch()"
+      >close</mat-icon
     >
   </div>
 </div>
-<div class="tw-flex tw-flex-row tw-m-24-px">
-  <section class="trending-subjects">
-    <div class="tw-font-600 tw-text-24-px">Trending Subjects</div>
-    <ul class="tw-list-none tw-pl-0">
-      <li class="tw-text-16-px tw-cursor-pointer tw-p-12-px" *ngFor="let subject of trendingSubjects" routerLink="/trending-subject/{{ subject.name }}">
-        {{ subject.name }}
-      </li>
-    </ul>
+
+<div class="home-main">
+  <section class="navigation">
+    
+    <div class="tw-flex tw-flex-row">
+      <section class="trending-subjects">
+        <div class="tw-font-600 tw-text-20-px">Trending Subjects</div>
+        <ul class="tw-list-none tw-pl-0">
+          <li
+            class="tw-text-16-px tw-cursor-pointer tw-p-12-px"
+            *ngFor="let subject of trendingSubjects"
+            routerLink="/trending-subject/{{ subject.name }}"
+          >
+            {{ subject.name }}
+          </li>
+        </ul>
+      </section>
+    </div>
+  </section>
+  <section class="searchResults">
+    <div class="tw-h-full tw-w-full" *ngIf="isLoading === true; else books">
+      <front-end-internship-assignment-loading></front-end-internship-assignment-loading>
+    </div>
+    <ng-template #books>
+      <div class="tw-h-full tw-w-full" *ngIf="error; else results">
+        <front-end-internship-assignment-error-component
+          [error]="error"
+        ></front-end-internship-assignment-error-component>
+      </div>
+      <ng-template #results>
+        <div
+          *ngIf="
+            trendingData.length > 0 && !bookSearch.value;
+            else searchResult
+          "
+        >
+          <front-end-internship-assignment-table-view
+            [booksList]="trendingData"
+            subjectName="Trending"
+          ></front-end-internship-assignment-table-view>
+        </div>
+        <ng-template #searchResult>
+          <div *ngIf="searchBooks.length > 0; else errorComponent">
+            <front-end-internship-assignment-table-view
+              [booksList]="searchBooks"
+              [subjectName]="searchTerm"
+            ></front-end-internship-assignment-table-view>
+            <mat-paginator
+              (page)="pageChanged($event)"
+              [length]="resultLength"
+              [pageSize]="10"
+              aria-label="Select page"
+            >
+            </mat-paginator>
+          </div>
+          <ng-template #errorComponent >
+            <div class="tw-h-full tw-w-full">
+              <front-end-internship-assignment-error-component
+                [error]="error"
+              ></front-end-internship-assignment-error-component></div></ng-template
+        ></ng-template> </ng-template
+    ></ng-template>
   </section>
 </div>

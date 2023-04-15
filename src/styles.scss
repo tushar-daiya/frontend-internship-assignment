@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-
+@import url("https://cdn.jsdelivr.net/npm/@angular/material/prebuilt-themes/deeppurple-amber.css");
 *,
 html,
 body {
@@ -14,6 +14,7 @@ body {
   tw-font-activ-grotisk
   tw-text-14-px
   tw-box-border
+ 
   tw-antialiased;
 }
 
@@ -22,10 +23,14 @@ body {
   @apply tw-h-full tw-w-full
 }
 
+
 body {
   @apply tw-m-0 tw-p-0
 }
-
+::placeholder {
+  @apply
+  tw-text-black
+}
 table {
   td,
   th {
